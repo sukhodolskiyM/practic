@@ -1,0 +1,35 @@
+/**
+ * @brief Practic
+ * @name SukhodolskiyMark 
+ * @date 2 07 2021
+*/
+#include <iostream>
+#include <cctype>
+#include <algorithm>
+#include <string>
+
+std::string
+special_shuffle(std::string s)
+{
+  if (s.size() < 3) return s;
+  auto begin = std::find_if(s.begin(), s.end(), ::isalpha);
+  auto end = std::find_if(s.rbegin(), s.rend(), ::isalpha).base();
+  std::random_shuffle(++begin, --end);
+  return s;
+}
+
+int
+main()
+{
+  std::string s1 = "Hello World!";
+  std::string s2 = "Hi Khai";
+  std::string s3 = "zero one";
+  std::string s4 = "computer engineering";
+  std::string s5 = "a string going from a to z";
+
+  std::cout << s1 << " --> " << special_shuffle(s1) << "\n"
+            << s2 << " --> " << special_shuffle(s2) << "\n"
+            << s3 << " --> " << special_shuffle(s3) << "\n"
+            << s4 << " --> " << special_shuffle(s4) << "\n"
+            << s5 << " --> " << special_shuffle(s5) << "\n";
+}
